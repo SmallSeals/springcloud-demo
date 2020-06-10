@@ -1,0 +1,15 @@
+server:
+  port: 5000
+
+
+spring:
+  application:
+    name: zookeeper-cloud
+
+  cloud:
+    zookeeper:
+      #  zookeeper  注册地址  多个， 隔开
+      connect-string: localhost:2181
+      discovery:
+        root: ${spring.application.name}
+

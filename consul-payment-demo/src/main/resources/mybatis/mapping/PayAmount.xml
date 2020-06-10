@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kb.demo.cloud.consul.dao.PayAmountMapper">
+    
+    <resultMap id="BaseResultMap" type="com.kb.demo.cloud.common.entity.PayAmount">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="amount" jdbcType="DECIMAL" property="amount" />
+    </resultMap>
+
+    <insert id="insert" parameterType="PayAmount"  useGeneratedKeys="true" keyProperty="id" >
+        insert into pay_amount(amount) values (#{amount})
+    </insert>
+    
+    
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select  id ,amount from  pay_amount  where id = #{id}
+    </select>
+</mapper>

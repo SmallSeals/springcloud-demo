@@ -1,0 +1,33 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: payment-zookeeper-service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/payment?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximumPoolSize: 8
+      #      minimumIdle: 2
+      idleTimeout: 600000
+      connectionTimeout: 30000
+      maxLifetime: 1800000
+      auto-commit: true
+      pool-name: MyHikariCP
+      connection-test-query: SELECT 1
+  cloud:
+    zookeeper:
+      connect-string: 192.168.81.128:2181
+      discovery:
+        # zookeeper 目录
+        root: "/${spring.application.name}"
+
+
+
+mybatis:
+  mapper-locations: classpath*:/mybatis/mapping/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.kb.demo.cloud.common.entity
